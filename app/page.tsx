@@ -9,7 +9,7 @@ export default function Home() {
       <section className="flex md:min-h-[90vh] min-h-[65vh] flex-col items-center justify-between bg-[#1c6758] text-white pad-x">
         <div className="text-center flex flex-col space-y-8 items-center h-full pt-24">
           <div className="text-center flex flex-col items-center h-full space-y-4">
-            <h1 className="md:text-5xl text-xl text-center font-bold">
+            <h1 className="md:text-5xl text-3xl text-center font-bold">
               Pantau Tumbuh Tanaman
             </h1>
             <p className="text-center max-w-lg">
