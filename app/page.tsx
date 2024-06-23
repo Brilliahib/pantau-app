@@ -2,6 +2,7 @@ import { IconsBadge } from "@/components/badge/icons-badge";
 import Button from "@/components/button/button";
 import HeroImage from "@/public/img/hero.png";
 import FarmerImage from "@/public/img/farmer.png";
+import { AccordionDemo } from "@/components/accordion/accordion";
 
 export default function Home() {
   return (
@@ -148,6 +149,17 @@ export default function Home() {
             <img src={FarmerImage.src} alt="" className="md:w-[400px]" />
           </div>
         </div>
+      </section>
+
+      <section className="pad-x md:py-12 py-8">
+        <div className="text-center flex flex-col justify-center items-center space-y-4 mb-20">
+          <h1 className="font-bold md:text-3xl text-xl text-[#1c6758]">FAQ</h1>
+          <p className="text-muted-foreground max-w-xl text-center">
+            Sebelum launching Aplikasi Pantau, berikut adalah gambaran umum
+            tentang fitur dan manfaat aplikasi Pantau.
+          </p>
+        </div>
+        <AccordionDemo />
       </section>
     </>
   );
