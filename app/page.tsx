@@ -158,7 +158,14 @@ export default function Home() {
             </div>
           </div>
           <div className="justify-center md:flex hidden">
-            <img src={FarmerImage.src} alt="" className="md:w-[400px]" />
+            <Image
+              src={FarmerImage.src}
+              alt=""
+              className="md:w-[400px]"
+              width={2000}
+              height={2000}
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
