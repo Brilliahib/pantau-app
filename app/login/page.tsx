@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import GoogleInput from "@/components/input/google-input";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { AlertDestructive } from "@/components/alert/alert-error";
 import Image from "next/image";
 
@@ -10,6 +10,8 @@ export default function LoginPage() {
   const { push } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const { data: session, status }: { data: any; status: string } = useSession();
+  const router = useRouter();
   const handleLogin = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
@@ -33,9 +35,16 @@ export default function LoginPage() {
     } catch (err) {
       console.log(err);
     } finally {
+      push("/dashboard");
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [router, status]);
   return (
     <>
       <section className="md:flex block min-h-screen">

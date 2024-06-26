@@ -19,9 +19,6 @@ const Navbar = () => {
             <NavLink href={item.href} name={item.name} />
           </li>
         ))}
-        <li className="flex items-center md:hidden inline">
-          <NavDrop />
-        </li>
       </ul>
       <ul className="flex items-center gap-x-8">
         <li className="flex items-center">
@@ -44,6 +41,9 @@ const Navbar = () => {
               </Button>
             </Link>
           )}
+        </li>
+        <li className="flex items-center md:hidden inline">
+          <NavDrop />
         </li>
       </ul>
     </header>
