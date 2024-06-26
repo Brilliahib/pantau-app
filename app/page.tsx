@@ -1,8 +1,10 @@
+"use client";
 import { IconsBadge } from "@/components/badge/icons-badge";
 import Button from "@/components/button/button";
 import HeroImage from "@/public/img/hero.png";
 import FarmerImage from "@/public/img/farmer.png";
 import { AccordionDemo } from "@/components/accordion/accordion";
+import { signIn } from "next-auth/react";
 
 export default function Home() {
   return (
@@ -19,6 +21,12 @@ export default function Home() {
             </p>
           </div>
           <Button>Coba Sekarang</Button>
+          <button
+            className="bg-white rounded-md px-4 py-1 text-green-500"
+            onClick={() => signIn()}
+          >
+            Coba
+          </button>
         </div>
         <div className="items-end h-full justify-center">
           <img src={HeroImage.src} alt="" />
