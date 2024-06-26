@@ -5,6 +5,7 @@ import HeroImage from "@/public/img/hero.png";
 import FarmerImage from "@/public/img/farmer.png";
 import { AccordionDemo } from "@/components/accordion/accordion";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -29,7 +30,13 @@ export default function Home() {
           </button>
         </div>
         <div className="items-end h-full justify-center">
-          <img src={HeroImage.src} alt="" />
+          <Image
+            src={HeroImage.src}
+            alt=""
+            width={640}
+            height={420}
+            loading="lazy"
+          />
         </div>
       </section>
 
