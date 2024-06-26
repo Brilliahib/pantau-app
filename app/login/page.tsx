@@ -22,12 +22,12 @@ export default function LoginPage() {
         callbackUrl: "/dashboard",
       });
       if (!res?.error) {
-        push("/dashboard");
         setIsLoading(false);
+        push("/dashboard");
       } else {
+        setIsLoading(false);
         if (res.status === 401) {
           setError("Email or Password is Incorrect");
-          setIsLoading(false);
         }
       }
     } catch (err) {
