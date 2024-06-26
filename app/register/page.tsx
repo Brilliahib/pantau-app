@@ -1,6 +1,7 @@
 "use client";
 
 import { AlertDestructive } from "@/components/alert/alert-error";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -39,10 +40,13 @@ export default function RegisterPage() {
   return (
     <section className="md:flex block min-h-screen">
       <div className="md:w-5/12 md:h-full">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1555037015-1498966bcd7c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
           className="md:h-screen h-[40vh] w-full object-cover"
+          width={1887}
+          height={2821}
+          loading="lazy"
         />
       </div>
       <div className="md:w-7/12 md:h-screen flex justify-center items-center pt-24">
