@@ -6,6 +6,7 @@ import FarmerImage from "@/public/img/farmer.png";
 import { AccordionDemo } from "@/components/accordion/accordion";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -21,13 +22,9 @@ export default function Home() {
               tanaman secara real time
             </p>
           </div>
-          <Button>Coba Sekarang</Button>
-          <button
-            className="bg-white rounded-md px-4 py-1 text-green-500"
-            onClick={() => signIn()}
-          >
-            Coba
-          </button>
+          <Link href="/login">
+            <Button>Coba Sekarang</Button>
+          </Link>
         </div>
         <div className="items-end h-full justify-center">
           <Image
