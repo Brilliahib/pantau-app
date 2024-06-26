@@ -6,7 +6,7 @@ const NavItems = [
   },
   {
     name: "Edukasi",
-    href: "/dashboard/edukasi",
+    href: "/dashboard/education",
     desc: "Educational resources on plant care and cultivation.",
   },
   {

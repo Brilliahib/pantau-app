@@ -43,66 +43,54 @@ const NavDrop = () => {
               </div>
               <Link
                 className={`anim group rounded-sm px-2 py-1 hover:bg-muted ${
-                  pathname === "/about" ? "bg-muted" : "bg-transparent"
+                  pathname === "/dashboard/pantau"
+                    ? "bg-muted"
+                    : "bg-transparent"
                 }`}
-                href="/about"
+                href="/dashboard/pantau"
               >
                 <p
                   className={`whitespace-nowrap text-sm font-medium group-hover:text-foreground md:text-base ${
-                    pathname === "/about"
+                    pathname === "/dashboard/pantau"
                       ? "text-foreground"
                       : "text-muted-foreground"
                   }`}
                 >
-                  About
+                  Pantau
                 </p>
               </Link>
               <Link
                 className={`anim group rounded-sm px-2 py-1 hover:bg-muted ${
-                  pathname === "/blog" ? "bg-muted" : "bg-transparent"
+                  pathname === "/dashboard/education"
+                    ? "bg-muted"
+                    : "bg-transparent"
                 }`}
-                href="/blog"
+                href="/dashboard/education"
               >
                 <p
                   className={`whitespace-nowrap text-sm font-medium group-hover:text-foreground md:text-base ${
-                    pathname === "/blog"
+                    pathname === "/dashboard/education"
                       ? "text-foreground"
                       : "text-muted-foreground"
                   }`}
                 >
-                  Blog
+                  Education
                 </p>
               </Link>
               <Link
                 className={`anim group rounded-sm px-2 py-1 hover:bg-muted ${
-                  pathname === "/playground" ? "bg-muted" : "bg-transparent"
+                  pathname === "/dashboard/news" ? "bg-muted" : "bg-transparent"
                 }`}
-                href="/playground"
+                href="/dashboard/news"
               >
                 <p
                   className={`whitespace-nowrap text-sm font-medium group-hover:text-foreground md:text-base ${
-                    pathname === "/playground"
+                    pathname === "/dashboard/news"
                       ? "text-foreground"
                       : "text-muted-foreground"
                   }`}
                 >
-                  Playground
-                </p>
-              </Link>
-              <Link
-                className={`anim group rounded-sm px-2 py-1 hover:bg-muted ${
-                  pathname === "/template" ? "bg-muted" : "bg-transparent"
-                }`}
-                href="/template"
-              >
-                <p
-                  className={`whitespace-nowrap text-sm font-medium group-hover:text-foreground md:text-base ${
-                    pathname === "/template"
-                      ? "text-foreground"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  Template
+                  News
                 </p>
               </Link>
             </div>
