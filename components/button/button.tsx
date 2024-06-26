@@ -22,7 +22,7 @@ const Button = ({
   return (
     <button
       className={cn(
-        "anim flex items-center rounded-sm border px-6 py-2 font-bold",
+        "anim flex items-center rounded-sm border px-4 py-2 font-bold text-sm",
         className,
         buttonVariant[variant]
       )}

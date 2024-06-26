@@ -1,15 +1,18 @@
 const NavItems = [
   {
     name: "Pantau",
-    href: "/pantau",
+    href: "/dashboard/pantau",
+    desc: "Monitor and track plant growth and soil conditions.",
   },
   {
     name: "Edukasi",
-    href: "/edukasi",
+    href: "/dashboard/edukasi",
+    desc: "Educational resources on plant care and cultivation.",
   },
   {
     name: "News",
-    href: "/news",
+    href: "/dashboard/news",
+    desc: "Latest news on agriculture and plant technology.",
   },
 ];
 

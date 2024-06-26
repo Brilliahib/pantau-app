@@ -1,16 +1,20 @@
+"use client";
 import Link from "next/link";
 import NavItems from "@/lib/constants";
 import NavLink from "./nav-link";
 import NavDrop from "./nav-drop";
 import Button from "../button/button";
 import { signOut, useSession } from "next-auth/react";
+import NavAuth from "./nav-auth";
+import LogoPantau from "@/public/img/logo-pantau.png";
+import Image from "next/image";
 
 const Navbar = () => {
   const { data: session, status }: { data: any; status: string } = useSession();
   return (
     <header className="pad-x sticky top-0 z-40 flex w-full items-center justify-between border-b bg-background py-4">
-      <Link href="/" className="flex items-center">
-        <h1 className="text-xl font-bold">Pantau</h1>
+      <Link href="/dashboard" className="flex items-center">
+        <Image src={LogoPantau} alt="Pantau App" width={40} height={40} />
       </Link>
 
       <ul className="flex items-center gap-x-8">
@@ -20,20 +24,10 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      <ul className="flex items-center gap-x-8">
-        <li className="flex items-center">
+      <ul className="flex items-center md:gap-x-8 gap-x-4">
+        <li className="flex items-center cursor-pointer">
           {status === "authenticated" ? (
-            <div className="flex gap-x-4 items-center">
-              <h1 className="text-sm text-gray-600 font-semibold">
-                {session?.user?.fullname}
-              </h1>
-              <button
-                className="anim flex items-center rounded-sm border px-6 py-2 font-bold bg-[#1c6758] text-white hover:bg-[#1c6758]/90"
-                onClick={() => signOut()}
-              >
-                Log Out
-              </button>
-            </div>
+            <NavAuth />
           ) : (
             <Link href="/login">
               <Button className="font-bold justify-center text-sm">
