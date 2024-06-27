@@ -17,10 +17,10 @@ export default function NotFound() {
         <div className="space-y-3 text-center">
           <h1 className="md:text-6xl text-4xl font-bold">404 Error</h1>
           <h3 className="md:text-xl text-md font-semibold">
-            Oops! Something's went wrong!
+            Oops! Something&#39;s went wrong!
           </h3>
           <p className="text-sm text-muted-foreground font-base">
-            Seems like the page you're trying to open is not ready.
+            Seems like the page you&#39;re trying to open is not ready.
           </p>
         </div>
         <div>
