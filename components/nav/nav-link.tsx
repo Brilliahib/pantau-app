@@ -10,7 +10,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href = "/", name = "Link" }) => {
     <Link href={href}>
       <p
         data-value={name}
-        className="font-medium text-sm text-muted-foreground hover:text-foreground"
+        className="font-medium text-sm text-muted-foreground hover:text-[#1c6758]"
       >
         {name}
       </p>

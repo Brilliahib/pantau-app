@@ -11,8 +11,7 @@ const Button = ({
 }) => {
   const buttonVariant = {
     primary: "bg-white text-[#1c6758] hover:bg-white/90",
-    secondary:
-      "bg-secondary text-secondary-foreground hover:bg-secondary/90 border-border",
+    secondary: "bg-[#1c6758] text-white hover:bg-[#1c6758]/90",
     destructive:
       "bg-destructive text-destructive-foreground hover:bg-destructive/90 border-destructive",
     outline:

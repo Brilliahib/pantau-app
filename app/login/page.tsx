@@ -58,7 +58,7 @@ export default function LoginPage() {
             loading="lazy"
           />
         </div>
-        <div className="md:w-7/12 md:h-screen flex justify-center items-center pt-24">
+        <div className="md:w-7/12 md:h-screen flex justify-center items-center pt-24 pad-x">
           <div className="w-full md:max-w-md" onSubmit={(e) => handleLogin(e)}>
             <form action="" className="space-y-8 w-full">
               <h1 className="text-center text-black md:text-3xl text-xl font-bold">
