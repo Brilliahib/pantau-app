@@ -79,3 +79,30 @@ export async function login(data: { email: string }) {
     return null;
   }
 }
+
+export async function addPlant(data: {
+  name: string;
+  tinggi: string;
+  monitor: string;
+}) {
+  // Basic validation for the input data
+  if (!data.name || !data.tinggi || !data.monitor) {
+    return {
+      status: false,
+      statusCode: 400,
+      message: "All fields are required",
+    };
+  }
+
+  try {
+    await addDoc(collection(firestore, "plants"), data);
+    return {
+      status: true,
+      statusCode: 200,
+      message: "Plant added successfully",
+    };
+  } catch (error) {
+    console.error("Error adding plant: ", error);
+    return { status: false, statusCode: 500, message: "Failed to add plant" };
+  }
+}

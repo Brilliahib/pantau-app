@@ -28,7 +28,7 @@ export default function Home() {
         </div>
         <div className="items-end h-full justify-center">
           <Image
-            className="max-w-[600px]"
+            className="md:max-w-[600px] max-w-[450px]"
             src={HeroImage.src}
             alt=""
             width={640}
