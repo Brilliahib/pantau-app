@@ -86,7 +86,7 @@ const AddPlantPage = () => {
         <DialogHeader>
           <DialogTitle>New Plant</DialogTitle>
           <DialogDescription>
-            Add a new plant here. Click save when you're done.
+            Add a new plant here. Click save when you&#39;re done.
           </DialogDescription>
         </DialogHeader>
         {message && <AlertSucces>{message}</AlertSucces>}

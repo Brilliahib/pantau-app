@@ -22,7 +22,7 @@ export function AddNews() {
         <DialogHeader>
           <DialogTitle>Add News</DialogTitle>
           <DialogDescription>
-            Add new news here. Click save when you're done.
+            Add new news here. Click save when you&#39;re done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
