@@ -8,6 +8,7 @@ import { signOut, useSession } from "next-auth/react";
 import NavAuth from "./nav-auth";
 import LogoPantau from "@/public/img/logo-pantau.png";
 import Image from "next/image";
+import SearchButton from "../dialog/search";
 
 const Navbar = () => {
   const { data: session, status }: { data: any; status: string } = useSession();
@@ -25,6 +26,9 @@ const Navbar = () => {
         ))}
       </ul>
       <ul className="flex items-center md:gap-x-8 gap-x-4">
+        <li className="flex items-center cursor-pointer">
+          <SearchButton />
+        </li>
         <li className="flex items-center cursor-pointer">
           {status === "authenticated" ? (
             <NavAuth />

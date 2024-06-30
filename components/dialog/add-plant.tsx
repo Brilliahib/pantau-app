@@ -13,9 +13,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SelectMonitor } from "@/components/select/select-monitor";
-import { AlertDescription } from "../ui/alert";
-import { AlertDestructive } from "../alert/alert-error";
 import { AlertSucces } from "../alert/alert-success";
 
 const firestore = getFirestore(app);
@@ -23,9 +20,9 @@ const firestore = getFirestore(app);
 export async function addPlant(data: {
   name: string;
   tinggi: string;
-  monitor: string;
+  monitor: string[];
 }) {
-  if (!data.name || !data.tinggi || !data.monitor) {
+  if (!data.name || !data.tinggi || !data.monitor.length) {
     return {
       status: false,
       statusCode: 400,
@@ -49,7 +46,7 @@ export async function addPlant(data: {
 const AddPlantPage = () => {
   const [name, setName] = useState<string>("");
   const [tinggi, setTinggi] = useState<string>("");
-  const [monitor, setMonitor] = useState<string>("");
+  const [monitor, setMonitor] = useState<string[]>([""]);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -64,7 +61,7 @@ const AddPlantPage = () => {
       if (result.status) {
         setName("");
         setTinggi("");
-        setMonitor("");
+        setMonitor([""]);
         setMessage("Plant added successfully!");
       } else {
         setMessage(result.message);
@@ -75,6 +72,21 @@ const AddPlantPage = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleMonitorChange = (index: number, value: string) => {
+    const newMonitor = [...monitor];
+    newMonitor[index] = value;
+    setMonitor(newMonitor);
+  };
+
+  const addMonitorField = () => {
+    setMonitor([...monitor, ""]);
+  };
+
+  const removeMonitorField = (index: number) => {
+    const newMonitor = monitor.filter((_, i) => i !== index);
+    setMonitor(newMonitor);
   };
 
   return (
@@ -90,7 +102,7 @@ const AddPlantPage = () => {
           </DialogDescription>
         </DialogHeader>
         {message && <AlertSucces>{message}</AlertSucces>}
-        <form onSubmit={handleSubmit} className="grid gap-4 py-4">
+        <form onSubmit={handleSubmit} className="grid gap-6 py-4">
           <div className="grid w-full items-center gap-1.5">
             <Label htmlFor="name">Name</Label>
             <Input
@@ -114,12 +126,29 @@ const AddPlantPage = () => {
             />
           </div>
           <div className="grid w-full items-center gap-1.5">
-            <Label htmlFor="monitor">Monitor</Label>
-            <Input
-              value={monitor}
-              onChange={(e) => setMonitor(e.target.value)}
-              required
-            />
+            <Label>Monitor</Label>
+            {monitor.map((mon, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <Input
+                  type="text"
+                  placeholder={`Enter name monitor, pantau, etc in here`}
+                  value={mon}
+                  onChange={(e) => handleMonitorChange(index, e.target.value)}
+                  required
+                />
+                {monitor.length > 1 && (
+                  <Button
+                    variant="destructive"
+                    onClick={() => removeMonitorField(index)}
+                  >
+                    Remove
+                  </Button>
+                )}
+              </div>
+            ))}
+            <Button variant="outline" onClick={addMonitorField}>
+              Add Monitor
+            </Button>
           </div>
           <DialogFooter>
             <Button disabled={isLoading} type="submit">

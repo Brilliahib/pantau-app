@@ -5,7 +5,7 @@ const NavItems = [
     desc: "Monitor and track plant growth and soil conditions.",
   },
   {
-    name: "Edukasi",
+    name: "Education",
     href: "/dashboard/education",
     desc: "Educational resources on plant care and cultivation.",
   },

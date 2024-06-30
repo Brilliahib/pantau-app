@@ -45,7 +45,7 @@ const PantauPage = () => {
             <AddPlantPage />
           </div>
         </div>
-        <div className="grid md:grid-cols-3 md:gap-x-4 md:space-y-0 space-y-4">
+        <div className="grid md:grid-cols-3 md:gap-4 md:space-y-0 space-y-4">
           {loading ? (
             <div>
               <SkeletonCard />
