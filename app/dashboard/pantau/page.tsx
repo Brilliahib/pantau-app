@@ -19,6 +19,31 @@ interface Plant {
 
 const firestore = getFirestore(app);
 
+export async function deletePlant(id: string) {
+  if (!id) {
+    return {
+      status: false,
+      statusCode: 400,
+      message: "Plant ID is required",
+    };
+  }
+
+  try {
+    await deleteDoc(doc(firestore, "plants", id));
+    return {
+      status: true,
+      statusCode: 200,
+      message: "Plant deleted successfully!",
+    };
+  } catch (error) {
+    return {
+      status: false,
+      statusCode: 500,
+      message: "Failed to delete plant",
+    };
+  }
+}
+
 const PantauPage = () => {
   const [plants, setPlants] = useState<Plant[]>([]);
   const [loading, setLoading] = useState(true);
@@ -48,25 +73,13 @@ const PantauPage = () => {
   };
 
   const handleDelete = async (id: string) => {
-    try {
-      const response = await fetch("/api/deletePlant", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
-      const result = await response.json();
+    const result = await deletePlant(id);
 
-      setMessage(result.message);
-      if (result.status) {
-        setPlants(plants.filter((plant) => plant.id !== id));
-      }
-      setDeleteId(null); // Reset deleteId setelah penghapusan
-    } catch (error) {
-      console.error("Kesalahan saat menghapus tanaman:", error);
-      setMessage("Gagal menghapus tanaman");
-    } // Reset deleteId after deletion
+    setMessage(result.message);
+    if (result.status) {
+      setPlants(plants.filter((plant) => plant.id !== id));
+    }
+    setDeleteId(null); // Reset deleteId after deletion
   };
 
   return (
