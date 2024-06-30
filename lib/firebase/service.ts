@@ -1,6 +1,7 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -104,5 +105,30 @@ export async function addPlant(data: {
   } catch (error) {
     console.error("Error adding plant: ", error);
     return { status: false, statusCode: 500, message: "Failed to add plant" };
+  }
+}
+
+export async function deletePlant(id: string) {
+  if (!id) {
+    return {
+      status: false,
+      statusCode: 400,
+      message: "Plant ID is required",
+    };
+  }
+
+  try {
+    await deleteDoc(doc(firestore, "plants", id));
+    return {
+      status: true,
+      statusCode: 200,
+      message: "Plant deleted successfully!",
+    };
+  } catch (error) {
+    return {
+      status: false,
+      statusCode: 500,
+      message: "Failed to delete plant",
+    };
   }
 }

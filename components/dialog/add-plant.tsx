@@ -125,7 +125,7 @@ const AddPlantPage = () => {
               required
             />
           </div>
-          <div className="grid w-full items-center gap-1.5">
+          <div className="grid w-full items-center gap-3">
             <Label>Monitor</Label>
             {monitor.map((mon, index) => (
               <div key={index} className="flex items-center gap-2">
@@ -146,8 +146,26 @@ const AddPlantPage = () => {
                 )}
               </div>
             ))}
-            <Button variant="outline" onClick={addMonitorField}>
-              Add Monitor
+            <Button
+              variant="outline"
+              className="w-fit p-2 gap-x-2"
+              onClick={addMonitorField}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="size-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>{" "}
+              More
             </Button>
           </div>
           <DialogFooter>
