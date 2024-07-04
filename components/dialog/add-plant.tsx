@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AlertSucces } from "../alert/alert-success";
+import { useToast } from "@/components/ui/use-toast";
 
 const firestore = getFirestore(app);
 
@@ -49,6 +50,7 @@ const AddPlantPage = () => {
   const [monitor, setMonitor] = useState<string[]>([""]);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const { toast } = useToast();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -63,6 +65,10 @@ const AddPlantPage = () => {
         setTinggi("");
         setMonitor([""]);
         setMessage("Plant added successfully!");
+        toast({
+          title: "Success!",
+          description: `Plant has been added!.`,
+        });
       } else {
         setMessage(result.message);
       }

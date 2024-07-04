@@ -4,8 +4,10 @@ import { AlertDestructive } from "@/components/alert/alert-error";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function RegisterPage() {
+  const { toast } = useToast();
   const { push } = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -34,6 +36,11 @@ export default function RegisterPage() {
     } else {
       setError(result.message || "Registration failed");
       setIsLoading(false);
+      toast({
+        variant: "destructive",
+        title: "Sign Up Failed!",
+        description: `${error}.`,
+      });
     }
   };
 
@@ -55,9 +62,6 @@ export default function RegisterPage() {
             <h1 className="text-center text-black md:text-3xl text-xl font-bold">
               Sign Up to Pantau
             </h1>
-            <div>
-              {error !== "" && <AlertDestructive>{error}</AlertDestructive>}
-            </div>
             <div>
               <label
                 htmlFor="fullname"

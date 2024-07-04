@@ -3,6 +3,7 @@ import { AlertDelete } from "@/components/alert/alert-delete";
 import AddPlantPage from "@/components/dialog/add-plant";
 import Navbar from "@/components/nav/nav-bar";
 import { SkeletonCard } from "@/components/skeleton/skeleton-card";
+import { ToastDemo } from "@/components/toast/toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import app from "@/lib/firebase/init";
@@ -18,31 +19,6 @@ interface Plant {
 }
 
 const firestore = getFirestore(app);
-
-export async function deletePlant(id: string) {
-  if (!id) {
-    return {
-      status: false,
-      statusCode: 400,
-      message: "Plant ID is required",
-    };
-  }
-
-  try {
-    await deleteDoc(doc(firestore, "plants", id));
-    return {
-      status: true,
-      statusCode: 200,
-      message: "Plant deleted successfully!",
-    };
-  } catch (error) {
-    return {
-      status: false,
-      statusCode: 500,
-      message: "Failed to delete plant",
-    };
-  }
-}
 
 const PantauPage = () => {
   const [plants, setPlants] = useState<Plant[]>([]);
@@ -73,17 +49,24 @@ const PantauPage = () => {
   };
 
   const handleDelete = async (id: string) => {
-    const result = await deletePlant(id);
-
-    setMessage(result.message);
-    if (result.status) {
-      setPlants(plants.filter((plant) => plant.id !== id));
+    if (!id) {
+      setMessage("ID tanaman diperlukan");
+      return;
     }
-    setDeleteId(null); // Reset deleteId after deletion
+    try {
+      await deleteDoc(doc(firestore, "plants", id));
+      setMessage("Tanaman berhasil dihapus!");
+      setPlants(plants.filter((plant) => plant.id !== id));
+    } catch (error) {
+      console.error("Gagal menghapus tanaman!");
+      setMessage("Gagal menghapus tanaman!");
+    }
+    setDeleteId(null);
   };
 
   return (
     <>
+      <Navbar />
       <div className="pad-x">
         <div className="py-4 space-y-4 md:space-y-0 md:flex md:justify-between md:items-center">
           <div>

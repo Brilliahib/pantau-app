@@ -4,7 +4,6 @@ import VideoEdukasi from "@/lib/video";
 const EducationPage = () => {
   return (
     <>
-      <Navbar />
       <div className="pad-x">
         <div className="py-4 space-y-1">
           <h1 className="md:text-2xl font-bold text-xl">Education</h1>

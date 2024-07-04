@@ -5,8 +5,10 @@ import GoogleInput from "@/components/input/google-input";
 import { signIn, useSession } from "next-auth/react";
 import { AlertDestructive } from "@/components/alert/alert-error";
 import Image from "next/image";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function LoginPage() {
+  const { toast } = useToast();
   const { push } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -30,12 +32,16 @@ export default function LoginPage() {
         setIsLoading(false);
         if (res.status === 401) {
           setError("Email or Password is Incorrect");
+          toast({
+            variant: "destructive",
+            title: "Login Failed!",
+            description: `${error}.`,
+          });
         }
       }
     } catch (err) {
       console.log(err);
     } finally {
-      push("/dashboard");
       setIsLoading(false);
     }
   };
@@ -64,7 +70,6 @@ export default function LoginPage() {
               <h1 className="text-center text-black md:text-3xl text-xl font-bold">
                 Sign In to Pantau
               </h1>
-              {error !== "" && <AlertDestructive>{error}</AlertDestructive>}
               <div>
                 <label
                   htmlFor="email"

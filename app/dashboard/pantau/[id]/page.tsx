@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { SkeletonCard } from "@/components/skeleton/skeleton-card";
+import Navbar from "@/components/nav/nav-bar";
 
 interface Plant {
   id: string;
@@ -69,17 +70,20 @@ const PlantDetail = () => {
   }
 
   return (
-    <div className="pad-x pt-4">
-      <h1 className="text-3xl font-bold">{plant.name}</h1>
-      <div>
-        <ul>
-          {plant.monitor.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
+    <>
+      <Navbar />
+      <div className="pad-x pt-4">
+        <h1 className="text-3xl font-bold">{plant.name}</h1>
+        <div>
+          <ul>
+            {plant.monitor.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <p>Tinggi: {plant.tinggi}</p>
       </div>
-      <p>Tinggi: {plant.tinggi}</p>
-    </div>
+    </>
   );
 };
 

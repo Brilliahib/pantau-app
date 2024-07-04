@@ -10,7 +10,8 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { AlertWarning } from "./alert-warning";
+import { useToast } from "../ui/use-toast";
+import { ToastAction } from "../ui/toast";
 
 interface AlertDialogDemoProps {
   plantId: string;
@@ -21,6 +22,7 @@ export function AlertDelete({
   plantId,
   onConfirmDelete,
 }: AlertDialogDemoProps) {
+  const { toast } = useToast();
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -53,7 +55,13 @@ export function AlertDelete({
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             className="bg-destructive hover:bg-destructive/90"
-            onClick={() => onConfirmDelete(plantId)}
+            onClick={() => {
+              onConfirmDelete(plantId);
+              toast({
+                title: "Success!",
+                description: `Plant ${plantId} has been deleted.`,
+              });
+            }}
           >
             Delete
           </AlertDialogAction>
